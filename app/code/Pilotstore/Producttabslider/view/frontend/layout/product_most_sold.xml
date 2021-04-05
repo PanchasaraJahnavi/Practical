@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+        <referenceContainer name="content">
+            <block class="Pilotstore\Producttabslider\Block\ProductList" name="catalog.product.most.sold" template="Pilotstore_Producttabslider::product/list/items.phtml" after="-">
+                <arguments>
+                    <argument name="type" xsi:type="string">most-sold</argument>
+                    <argument name="title" xsi:type="string" translate="true">Most Selling</argument>
+					<argument name="num_products" xsi:type="string">6</argument>
+					<argument name="interval" xsi:type="string">45</argument>          
+                </arguments>
+                <block class="Magento\Catalog\Block\Product\ProductList\Item\Container" name="product.most.sold.addto" as="addto">
+                    <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare" name="product.most.sold.addto.compare" as="compare" template="Magento_Catalog::product/list/addto/compare.phtml"/>
+                </block>			              
+            </block>
+        </referenceContainer>
+    </body>
+</page>

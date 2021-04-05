@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="register-link">
+            <arguments>
+                <argument name="label" xsi:type="string" translate="true">Register</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="header.container">
+            <container name="header-container" label="Page Header Container" as="header-container" htmlTag="div" htmlClass="header-container" />
+        </referenceContainer>
+        <referenceContainer name="header-wrapper">
+            <container name="header-right" label="Page Header right" as="header-right" htmlTag="div" htmlClass="header-right" after="logo">
+                <container name="header-right-top" label="Page Header top" as="header-right-top" htmlTag="div" htmlClass="header-top" before="-">
+                    <block class="Magento\Cms\Block\Block" name="top_header_contact_info"> 
+                        <arguments> 
+                            <argument name="block_id" xsi:type="string">top_header_contact_info</argument> 
+                        </arguments> 
+                    </block> 
+                </container>
+            </container>
+        </referenceContainer>
+        
+        <move element="header-wrapper" destination="header-container" before="-" />
+        <move element="header.panel.wrapper" destination="header-right" after="minicart" />
+        <move element="navigation.sections" destination="header-right" after="header-right-top" />
+        <move element="minicart" destination="header-right" after="navigation.sections" />
+        <referenceContainer name="header-container">
+            <container name="bottom-header" label="Page Header Bottom" as="bottom-header" htmlTag="div" htmlClass="header-bottom d-flex flex-wrap justify-content-between" after="header-wrapper">
+                <block class="Magento\Cms\Block\Block" name="header_all_categories"> 
+                    <arguments> 
+                        <argument name="block_id" xsi:type="string">header_all_categories</argument> 
+                    </arguments> 
+                </block> 
+            </container>
+        </referenceContainer>
+        
+        <move element="top.search" destination="bottom-header" after="-" />
+        
+    </body>
+</page>
